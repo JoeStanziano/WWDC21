@@ -55,10 +55,21 @@ struct NewsList: View {
                         }
                        
                     }
+                    .swipeActions(edge: .leading, allowsFullSwipe: false) {
+                        Button(action: {
+                            print("\(item.title)")
+                        }) {
+                            Image(systemName: "hand.thumbsdown.circle.fill")
+                        }
+                        .tint(.indigo)
+                    }
                     .swipeActions {
-                        Button("Like"){
-                            print("I like \(item.title)")
-                        }.tint(.mint)
+                        Button(action: {
+                            print("\(item.title)")
+                        }) {
+                            Image(systemName: "hand.thumbsup.circle.fill")
+                        }
+                        .tint(.mint)
                     }
                 }
             }
