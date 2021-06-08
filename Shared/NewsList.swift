@@ -13,11 +13,21 @@ struct NewsItem: Decodable, Identifiable, Hashable {
     let title: String
     let strap: String
 }
+struct SearchSuggestions: Decodable, Identifiable, Hashable {
+    let id: Int
+    let title: String
+}
 
 struct NewsList: View {
     @State private var searchText = ""
     @State private var news = [
         NewsItem(id: 0, title: "The latest news", strap: "pull to refresh")
+    ]
+    
+    @State private var suggestions = [
+        SearchSuggestions(id: 0, title: "WWDC"),
+        SearchSuggestions(id: 1, title: "SwiftUI"),
+        SearchSuggestions(id: 2, title: "iOS")
     ]
     
     var searchResults: [NewsItem] {
@@ -39,21 +49,20 @@ struct NewsList: View {
                         VStack(alignment: .leading){
                             Text(item.title)
                                 .font(.headline)
+                                
                             Text(item.strap)
                                 .foregroundColor(.secondary)
                         }
+                       
+                    }
+                    .swipeActions {
+                        Button("Like"){
+                            print("I like \(item.title)")
+                        }.tint(.mint)
                     }
                 }
             }
             .navigationTitle("Trending News")
-            .searchable(text: $searchText) {
-                if searchText.count >= 3 {
-                    ForEach(searchResults, id: \.self) { result in
-                        Text("Are you looking for \(result.title)?")
-                            .searchCompletion(result.strap)
-                    }
-                }
-            }
             .refreshable {
                 do {
                     let url = URL(string: "https://www.hackingwithswift.com/samples/news-1.json")!
@@ -62,6 +71,19 @@ struct NewsList: View {
                 } catch {
                     print("oops")
                     news = []
+                }
+            }
+        }
+        .searchable(text: $searchText) {
+            if searchText.count >= 3 {
+                ForEach(searchResults, id: \.self) { result in
+                    Text("Are you looking for \(result.title)?")
+                        .searchCompletion(result.strap)
+                }
+            } else {
+                ForEach(suggestions, id: \.self) { suggestion in
+                    Text(suggestion.title)
+                        .searchCompletion(suggestion.title)
                 }
             }
         }
