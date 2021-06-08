@@ -12,6 +12,8 @@ struct NewsItem: Decodable, Identifiable, Hashable {
     let id: Int
     let title: String
     let strap: String
+    let main_image: String
+    
 }
 struct SearchSuggestions: Decodable, Identifiable, Hashable {
     let id: Int
@@ -20,10 +22,10 @@ struct SearchSuggestions: Decodable, Identifiable, Hashable {
 
 struct NewsList: View {
     @State private var searchText = ""
+    @State private var image: UIImage?
     @State private var news = [
-        NewsItem(id: 0, title: "The latest news", strap: "pull to refresh")
+        NewsItem(id: 0, title: "The latest news", strap: "pull to refresh", main_image: "")
     ]
-    
     @State private var suggestions = [
         SearchSuggestions(id: 0, title: "WWDC"),
         SearchSuggestions(id: 1, title: "SwiftUI"),
@@ -45,15 +47,9 @@ struct NewsList: View {
         NavigationView {
             List{
                 ForEach(searchResults, id: \.self) { item in
+                    
                     NavigationLink(destination: Text(item.strap)){
-                        VStack(alignment: .leading){
-                            Text(item.title)
-                                .font(.headline)
-                                
-                            Text(item.strap)
-                                .foregroundColor(.secondary)
-                        }
-                       
+                        NewsRow(item: item)
                     }
                     .swipeActions(edge: .leading, allowsFullSwipe: false) {
                         Button(action: {

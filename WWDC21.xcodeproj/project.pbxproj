@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D83C5E07266FDE7C00CD4C46 /* NewsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83C5E06266FDE7C00CD4C46 /* NewsRow.swift */; };
+		D83C5E08266FDE7C00CD4C46 /* NewsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83C5E06266FDE7C00CD4C46 /* NewsRow.swift */; };
 		D85E1E3E266F9D6C00BE10CE /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85E1E3D266F9D6C00BE10CE /* Tests_iOS.swift */; };
 		D85E1E48266F9D6C00BE10CE /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85E1E47266F9D6C00BE10CE /* Tests_macOS.swift */; };
 		D85E1E49266F9D6C00BE10CE /* WWDC21.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D85E1E24266F9D6C00BE10CE /* WWDC21.xcdatamodeld */; };
@@ -41,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D83C5E06266FDE7C00CD4C46 /* NewsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsRow.swift; sourceTree = "<group>"; };
 		D85E1E25266F9D6C00BE10CE /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		D85E1E26266F9D6C00BE10CE /* WWDC21App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WWDC21App.swift; sourceTree = "<group>"; };
 		D85E1E27266F9D6C00BE10CE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -103,6 +106,7 @@
 				D85E1E26266F9D6C00BE10CE /* WWDC21App.swift */,
 				D85E1E27266F9D6C00BE10CE /* ContentView.swift */,
 				D85E1E61266F9E5800BE10CE /* NewsList.swift */,
+				D83C5E06266FDE7C00CD4C46 /* NewsRow.swift */,
 				D85E1E28266F9D6C00BE10CE /* Persistence.swift */,
 				D85E1E29266F9D6C00BE10CE /* Assets.xcassets */,
 				D85E1E24266F9D6C00BE10CE /* WWDC21.xcdatamodeld */,
@@ -296,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D85E1E49266F9D6C00BE10CE /* WWDC21.xcdatamodeld in Sources */,
+				D83C5E07266FDE7C00CD4C46 /* NewsRow.swift in Sources */,
 				D85E1E62266F9E5800BE10CE /* NewsList.swift in Sources */,
 				D85E1E4F266F9D6C00BE10CE /* Persistence.swift in Sources */,
 				D85E1E4B266F9D6C00BE10CE /* WWDC21App.swift in Sources */,
@@ -308,6 +313,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D85E1E4A266F9D6C00BE10CE /* WWDC21.xcdatamodeld in Sources */,
+				D83C5E08266FDE7C00CD4C46 /* NewsRow.swift in Sources */,
 				D85E1E63266F9E5800BE10CE /* NewsList.swift in Sources */,
 				D85E1E50266F9D6C00BE10CE /* Persistence.swift in Sources */,
 				D85E1E4C266F9D6C00BE10CE /* WWDC21App.swift in Sources */,
