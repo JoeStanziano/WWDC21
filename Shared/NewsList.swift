@@ -42,6 +42,16 @@ struct NewsList: View {
             }
         }
     }
+    func refreshData() async {
+        do {
+            let url = URL(string: "https://www.hackingwithswift.com/samples/news-1.json")!
+            let (data, _) = try await URLSession.shared.data(from: url)
+            news = try JSONDecoder().decode([NewsItem].self, from: data)
+        } catch {
+            print("oops")
+            news = []
+        }
+    }
     
     var body: some View {
         NavigationView {
@@ -70,15 +80,12 @@ struct NewsList: View {
                 }
             }
             .navigationTitle("Trending News")
+            .task {
+                ///Runs an async task as soon as your view loads. cancels if view is removed.
+                //await refreshData()
+            }
             .refreshable {
-                do {
-                    let url = URL(string: "https://www.hackingwithswift.com/samples/news-1.json")!
-                    let (data, _) = try await URLSession.shared.data(from: url)
-                    news = try JSONDecoder().decode([NewsItem].self, from: data)
-                } catch {
-                    print("oops")
-                    news = []
-                }
+                await refreshData()
             }
         }
         .searchable(text: $searchText) {
